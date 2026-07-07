@@ -43,19 +43,21 @@ single fat message from Claude, a stream of deltas from OpenAI — converging on
 { "type": "assistant", "message": { "content": [
   { "type": "tool_use", "id": "toolu_echo", "name": "echo", "input": { "text": "hi" } }
 ] } }
+```
 
+```jsonc
 // OpenAI Agents SDK — the same call arrives as streamed deltas
 { "type": "response.output_item.added",
   "item": { "type": "function_call", "name": "echo", "call_id": "call_Ewi…" } }
 { "type": "response.function_call_arguments.delta", "delta": "{\"text\":\"hi\"}" }
 ```
 
-Same tool call, same arguments, same result — the two SDKs just describe it with
-different field names and a different streaming shape. A normalizer folds **either
-one** into the identical AgJSON event stream, so your client only ever learns this:
+<p align="center">
+  <sub><b>N O R M A L I Z E</b></sub><br/>▼
+</p>
 
 ```jsonc
-// …both normalize to the same AgJSON events
+// AgJSON — identical from either SDK
 { "type": "tool.start",          "name": "echo", "toolCallId": "…" }
 { "type": "tool.args.assembled", "input": { "text": "hi" } }
 { "type": "tool.done",           "outcome": "ok",
