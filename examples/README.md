@@ -22,3 +22,16 @@ works with either framework.
 
 These are synthetic conformance fixtures drawn from the reference SDK's test
 corpus — safe to read, copy, and diff.
+
+## `render-recipe`
+
+The other half of "write your client once": how to turn an AgJSON event stream
+into a rendered UI — with **no AgJSON UI dependency**. `reduce()` hands you a
+plain object graph (`messages`, `turns`, `artifacts`); walking it is ~25 lines
+in any framework. Deliberately a *recipe*, not a package — AgJSON is the
+transport, the UI stays yours.
+
+| File | What it shows |
+| --- | --- |
+| [`render-recipe/render.ts`](./render-recipe/render.ts) | Framework-agnostic fold: events → `messages` → strings (runnable). |
+| [`render-recipe/react.tsx`](./render-recipe/react.tsx) | The same, as a ~25-line React component. |
