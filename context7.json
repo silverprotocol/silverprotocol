@@ -1,0 +1,15 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "AgJSON (Silver Protocol)",
+  "description": "Open, typed wire format that normalizes agent-framework event streams (Claude Agent SDK, OpenAI Agents, Google ADK, …) into one shape — write your client once, plug in any framework it has a normalizer for.",
+  "branch": "main",
+  "excludeFolders": ["assets", "scripts"],
+  "rules": [
+    "AgJSON is a normalization/transport layer, NOT a UI framework. It translates each agent framework's native event stream into one typed `AgEvent` shape; it does not render UI (rendering stays with MCP Apps / A2UI, whose payloads it carries untouched).",
+    "Producer side: create a per-framework normalizer (e.g. `createClaudeNormalizer()` from `@silverprotocol/claude-agent-sdk`), feed it each native event with `push(native)`, then call `flush()` at end-of-stream. The normalizer sits ON TOP of the framework's own SDK (e.g. `query()` from `@anthropic-ai/claude-agent-sdk`) — it does not replace it.",
+    "Consumer side: use `ingestAgEvents()` to validate incoming wire objects, then a `Reducer` (or `reduce()`) to fold the `AgEvent` stream into `{ messages, turns, artifacts, memory }`. The same client code works regardless of which framework produced the stream.",
+    "Packages: `@silverprotocol/core` (the AgJSON types + the normative `reduce()`), plus per-framework normalizers `@silverprotocol/claude-agent-sdk`, `@silverprotocol/openai-agents`, and `@silverprotocol/google-adk`.",
+    "The spec is Draft (wire version `1.0.0-draft.1`) and may still change before the v1 freeze.",
+    "AgJSON composes with MCP (tools) and A2UI (rendering) rather than competing with them. It is a normalization layer, not an interaction framework like AG-UI — it owns nothing about shared state or rendering."
+  ]
+}
