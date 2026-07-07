@@ -104,6 +104,44 @@ for (const ev of ingestAgEvents(agEvents)) reducer.push(ev);
 const { messages, turns } = reducer.result();
 ```
 
+Same idea for every framework — **only the normalizer changes; the `ingestAgEvents` →
+`reduce()` consumer half above is identical.** OpenAI Agents SDK:
+
+```ts
+import { Agent, run } from "@openai/agents";
+import { createOpenaiNormalizer } from "@silverprotocol/openai-agents";
+
+const agent = new Agent({ name: "Assistant", instructions: "Use the echo tool." });
+const n = createOpenaiNormalizer();
+const agEvents = [];
+const stream = await run(agent, "call the echo tool", { stream: true });
+for await (const native of stream) agEvents.push(...n.push(native));
+await stream.completed;               // let the run finish
+agEvents.push(...n.flush());
+// …then the same ingestAgEvents(agEvents) → Reducer as above.
+```
+
+Google ADK (`@iqai/adk`):
+
+```ts
+import { AgentBuilder } from "@iqai/adk";
+import { createAdkNormalizer } from "@silverprotocol/google-adk";
+
+const { runner, session } = await AgentBuilder.create("assistant")
+  .withModel("gemini-2.5-flash")
+  .withInstruction("Use the echo tool.")
+  .build();
+const n = createAdkNormalizer();
+const agEvents = [];
+for await (const native of runner.runAsync({
+  userId: "user-1",
+  sessionId: session.id,
+  newMessage: { parts: [{ text: "call the echo tool" }] },
+})) agEvents.push(...n.push(native));
+agEvents.push(...n.flush());
+// …then the same ingestAgEvents(agEvents) → Reducer as above.
+```
+
 ## The spec
 
 The normative AgJSON v1 specification lives here in **[`SPEC.md`](./SPEC.md)** and is
