@@ -135,7 +135,7 @@ const { runner, session } = await AgentBuilder.create("assistant")
 const n = createAdkNormalizer();
 const agEvents = [];
 for await (const native of runner.runAsync({
-  userId: "user-1",
+  userId: session.userId, // the session build() created — must match, or "Session not found"
   sessionId: session.id,
   newMessage: { parts: [{ text: "call the echo tool" }] },
 })) agEvents.push(...n.push(native));
