@@ -29,6 +29,11 @@ Normalizers are community-contributable. A normalizer implements the stateful
 opening an issue so we can point you at the reference implementation and the
 conformance fixtures.
 
+## Maintainers
+
+Silver Protocol and the AgJSON spec are maintained by
+[@wanseob](https://github.com/wanseob).
+
 ## License
 
 By contributing you agree that your contributions are licensed under the
