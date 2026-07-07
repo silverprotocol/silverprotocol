@@ -1,0 +1,136 @@
+[
+  {
+    "type": "turn.start",
+    "seq": 0,
+    "turnId": "turn_sess_echo",
+    "threadId": "sess_echo"
+  },
+  {
+    "type": "message.start",
+    "seq": 1,
+    "id": "msg_echo_1",
+    "turnId": "turn_sess_echo",
+    "threadId": "sess_echo",
+    "role": "assistant",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "type": "tool.start",
+    "seq": 2,
+    "turnId": "turn_sess_echo",
+    "toolCallId": "toolu_echo",
+    "name": "echo",
+    "index": 0,
+    "messageId": "msg_echo_1"
+  },
+  {
+    "type": "tool.args.delta",
+    "seq": 3,
+    "toolCallId": "toolu_echo",
+    "delta": "{\"text\":\"hi\"}"
+  },
+  {
+    "type": "tool.args.assembled",
+    "seq": 4,
+    "toolCallId": "toolu_echo",
+    "input": {
+      "text": "hi"
+    }
+  },
+  {
+    "type": "message.end",
+    "seq": 5,
+    "id": "msg_echo_1",
+    "usage": {
+      "inputTokens": 20,
+      "outputTokens": 8,
+      "cumulative": true
+    }
+  },
+  {
+    "type": "tool.done",
+    "seq": 6,
+    "turnId": "turn_sess_echo",
+    "toolCallId": "toolu_echo",
+    "content": [
+      {
+        "type": "text",
+        "text": "echo: hi"
+      }
+    ],
+    "outcome": "ok",
+    "isError": false,
+    "messageId": "toolu_echo:result"
+  },
+  {
+    "type": "message.start",
+    "seq": 7,
+    "id": "msg_echo_2",
+    "turnId": "turn_sess_echo",
+    "threadId": "sess_echo",
+    "role": "assistant",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "type": "text.start",
+    "seq": 8,
+    "id": "msg_echo_2:text:0",
+    "messageId": "msg_echo_2",
+    "turnId": "turn_sess_echo"
+  },
+  {
+    "type": "text.delta",
+    "seq": 9,
+    "id": "msg_echo_2:text:0",
+    "messageId": "msg_echo_2",
+    "delta": "Done.",
+    "turnId": "turn_sess_echo"
+  },
+  {
+    "type": "text.end",
+    "seq": 10,
+    "id": "msg_echo_2:text:0",
+    "messageId": "msg_echo_2",
+    "turnId": "turn_sess_echo"
+  },
+  {
+    "type": "message.end",
+    "seq": 11,
+    "id": "msg_echo_2",
+    "usage": {
+      "inputTokens": 30,
+      "outputTokens": 5,
+      "cumulative": true
+    }
+  },
+  {
+    "type": "turn.done",
+    "seq": 12,
+    "turnId": "turn_sess_echo",
+    "outcome": {
+      "type": "success",
+      "result": "Done."
+    },
+    "finishReason": "stop",
+    "usage": {
+      "inputTokens": 50,
+      "outputTokens": 13,
+      "cacheReadTokens": 0,
+      "cacheWriteTokens": 0,
+      "serverToolRequests": 0,
+      "costUsd": 0.01,
+      "cumulative": true,
+      "byModel": {
+        "claude-sonnet-4-6": {
+          "inputTokens": 50,
+          "outputTokens": 13,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "costUsd": 0.01,
+          "serverToolRequests": 0,
+          "cumulative": true
+        }
+      }
+    }
+  }
+]
