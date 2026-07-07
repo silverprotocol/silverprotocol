@@ -122,20 +122,19 @@ agEvents.push(...n.flush());
 // …then the same `for (const ev of agEvents) reducer.push(ev)` as above.
 ```
 
-Google ADK (`@iqai/adk`):
+Google ADK (official [`@google/adk`](https://github.com/google/adk-js)):
 
 ```ts
-import { AgentBuilder } from "@iqai/adk";
+import { LlmAgent, InMemoryRunner } from "@google/adk";
 import { createAdkNormalizer } from "@silverprotocol/google-adk";
 
-const { runner, session } = await AgentBuilder.create("assistant")
-  .withModel("gemini-2.5-flash")
-  .withInstruction("Use the echo tool.")
-  .build();
+const agent = new LlmAgent({ name: "assistant", model: "gemini-3.5-flash", instruction: "Use the echo tool." });
+const runner = new InMemoryRunner({ agent });
+const session = await runner.sessionService.createSession({ appName: runner.appName, userId: "user-1" });
 const n = createAdkNormalizer();
 const agEvents = [];
 for await (const native of runner.runAsync({
-  userId: session.userId, // the session build() created — must match, or "Session not found"
+  userId: session.userId,
   sessionId: session.id,
   newMessage: { parts: [{ text: "call the echo tool" }] },
 })) agEvents.push(...n.push(native));
