@@ -4,7 +4,7 @@ Thanks for your interest in AgJSON.
 
 ## Where things go
 
-- **This repo (`silverprotocol/silverprotocol`)** — the protocol itself: the
+- **This repo (`silverprotocol/AgJSON`)** — the protocol itself: the
   spec ([`SPEC.md`](./SPEC.md)), event vocabulary, framework-mapping questions,
   and proposals for new event types or blocks. Open an **issue** or a
   **discussion** here for anything protocol-level.

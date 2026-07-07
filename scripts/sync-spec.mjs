@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * SPEC.md is canonical HERE, in the neutral flagship (protocol/SPEC.md →
- * silverprotocol/silverprotocol). Each language SDK vendors a byte-identical
+ * silverprotocol/AgJSON). Each language SDK vendors a byte-identical
  * follower copy so its own self-contained drift gate (e.g. the TypeScript
  * SDK's check-spec-drift.mjs, which compares SPEC.md ↔ agjson.ts and runs in
  * the public typescript-sdk repo where protocol/ does not exist) can resolve
