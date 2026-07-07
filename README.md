@@ -28,19 +28,9 @@ event stream into one typed, versioned, forward-compatible shape — so a client
 written against AgJSON works with every framework a normalizer exists for, today and
 after the next SDK release.
 
-```mermaid
-flowchart LR
-    subgraph FW [Agent frameworks]
-        direction TB
-        F1[Claude Agent SDK]
-        F2[OpenAI Agents SDK]
-        F3[Google ADK]
-        F4["… + more"]
-    end
-    FW -->|normalize| SP([Silver Protocol])
-    SP --> AG[[AgJSON]]
-    AG -->|"one shape, any framework"| C[Your client]
-```
+<p align="center">
+  <img src="./assets/architecture.svg" width="640" alt="Agent frameworks are normalized by Silver Protocol into AgJSON, which your client consumes." />
+</p>
 
 ## Two SDKs, one event vocabulary
 
@@ -59,6 +49,10 @@ single fat message from Claude, a stream of deltas from OpenAI — converging on
   "item": { "type": "function_call", "name": "echo", "call_id": "call_Ewi…" } }
 { "type": "response.function_call_arguments.delta", "delta": "{\"text\":\"hi\"}" }
 ```
+
+Same tool call, same arguments, same result — the two SDKs just describe it with
+different field names and a different streaming shape. A normalizer folds **either
+one** into the identical AgJSON event stream, so your client only ever learns this:
 
 ```jsonc
 // …both normalize to the same AgJSON events

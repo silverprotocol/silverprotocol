@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" width="700" role="img" aria-label="Agent frameworks (Claude Agent SDK, OpenAI Agents SDK, Google ADK, and more) are normalized by Silver Protocol into AgJSON, which your client consumes.">
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}</style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6ee7ff"/>
+    </marker>
+  </defs>
+
+  <rect x="6" y="6" width="688" height="208" rx="14" fill="#0d1117" stroke="#21262d"/>
+
+  <text x="105" y="32" text-anchor="middle" fill="#6ee7ff" font-size="9" font-weight="700" letter-spacing="1.2">AGENT FRAMEWORKS</text>
+
+  <rect x="30" y="42" width="150" height="28" rx="14" fill="#05070a" stroke="#2a313a"/>
+  <text x="105" y="60" text-anchor="middle" fill="#9aa4af" font-size="11">Claude Agent SDK</text>
+  <rect x="30" y="78" width="150" height="28" rx="14" fill="#05070a" stroke="#2a313a"/>
+  <text x="105" y="96" text-anchor="middle" fill="#9aa4af" font-size="11">OpenAI Agents SDK</text>
+  <rect x="30" y="114" width="150" height="28" rx="14" fill="#05070a" stroke="#2a313a"/>
+  <text x="105" y="132" text-anchor="middle" fill="#9aa4af" font-size="11">Google ADK</text>
+  <rect x="30" y="150" width="150" height="28" rx="14" fill="#05070a" stroke="#2a313a"/>
+  <text x="105" y="168" text-anchor="middle" fill="#6b747e" font-size="11" font-style="italic">+ more</text>
+
+  <line x1="190" y1="110" x2="232" y2="110" stroke="#6ee7ff" stroke-width="2" marker-end="url(#a)"/>
+
+  <polygon points="286,84 316,140 256,140" fill="#ffffff" fill-opacity="0.05" stroke="#e6edf3" stroke-opacity="0.55" stroke-width="2.5" stroke-linejoin="round"/>
+  <text x="286" y="160" text-anchor="middle" fill="#e6edf3" font-size="11" font-weight="700">Silver Protocol</text>
+
+  <line x1="336" y1="110" x2="378" y2="110" stroke="#6ee7ff" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="388" y="89" width="104" height="42" rx="10" fill="#05070a" stroke="#6ee7ff"/>
+  <text x="440" y="115" text-anchor="middle" fill="#6ee7ff" font-size="14" font-weight="700">AgJSON</text>
+
+  <line x1="500" y1="110" x2="542" y2="110" stroke="#6ee7ff" stroke-width="2" marker-end="url(#a)"/>
+
+  <rect x="552" y="89" width="120" height="42" rx="10" fill="#05070a" stroke="#30363d"/>
+  <text x="612" y="115" text-anchor="middle" fill="#e6edf3" font-size="13" font-weight="700">Your client</text>
+</svg>
